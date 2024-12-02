@@ -11,9 +11,10 @@
 # succeed.
 name: Check and document build requirements for Sphinx venv
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  pull_request:
+    paths:
+      - 'docs/**'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
