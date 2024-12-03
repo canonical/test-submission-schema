@@ -4,7 +4,7 @@ Example Title: [New] New Test Submission Schema
 Pick one of the following:
 - Infra: Your change only includes documentation, comments or github actions
 - BugFix: Your change fixes a bug
-- New: Your change is a new backward compatible feature, a new test/test plan/test inclusion
+- New: Your change is a new backward compatible feature
 - Breaking: Your change breaks backward compatibility
 
 Signed commits are required.
