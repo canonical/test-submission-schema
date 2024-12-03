@@ -1,5 +1,5 @@
 <!--
-Example Title: [BugFix] Fixed bugged behaviour of YARF load config
+Example Title: [New] New Test Submission Schema
 
 Pick one of the following:
 - Infra: Your change only includes documentation, comments or github actions
@@ -43,16 +43,4 @@ Please make sure that...
 <!--
 - How was this PR tested? Please provide steps to follow so that the reviewer(s) can test on their end.
 - Please provide a list of what tests were run and on what platform/configuration.
-- Remember to check the test coverage of your PR as described in CONTRIBUTING.md
 -->
-
-## Merge Method
-
-<!--
-This repository accepts the following merge methods:
-1. Squash and Merge (default): Combine all commits from the head branch into a single commit in the base branch.
-2. Merge commits: Add all commits from the head branch to the base branch with a merge commit.
-Please specify below the merge method of choice.
--->
-
-Squash and Merge
