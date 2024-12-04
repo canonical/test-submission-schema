@@ -1,0 +1,168 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://certification.canonical.com/test-submission-schema.json",
+    "title": "Test Submission Schema",
+    "description": "A submission schema for submitting test plans.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "origin",
+        "session_data",
+        "results"
+    ],
+    "properties": {
+        "version": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The version of the test submission schema."
+        },
+        "origin": {
+            "type": "object",
+            "required": [
+                "name",
+                "version",
+                "packaging"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The application used to run the test plan."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version of the application used to run the test plan."
+                },
+                "packaging": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of application. e.g. Snap, Deb."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the application."
+                        },
+                        "version": {
+                            "type": "string",
+                            "description": "The version of the application."
+                        },
+                        "revision": {
+                            "type": "string",
+                            "description": "The revision of the application."
+                        },
+                        "date": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "The package creation date."
+                        }
+                    },
+                    "if": {"properties": {"type": {"const": "snap"}}},
+                    "then": {"required": ["revision"]}
+                }
+            }
+        },
+        "session_data": {
+            "type": "object",
+            "required": [
+                "title",
+                "test_plan_id"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the test plan."
+                },
+                "test_plan_id": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+$",
+                    "description": "The unique identifier of the test plan."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A brief description of the test plan."
+                },
+                "execution_id": {
+                    "type": "string",
+                    "description": "Test Observer execution ID."
+                }
+            }
+        },
+        "results": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "test_description",
+                    "certification_status",
+                    "category_id",
+                    "outcome",
+                    "comments",
+                    "io_log",
+                    "duration",
+                    "type",
+                    "template_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
+                        "description": "The unique identifier of the test case."
+                    },
+                    "test_description": {
+                        "type": "string",
+                        "description": "The description of the test case.",
+                        "maxLength": 80
+                    },
+                    "certification_status": {
+                        "type": "string",
+                        "description": "The certification status of the test case.",
+                        "enum": [
+                            "blocker",
+                            "non-blocker"
+                        ]
+                    },
+                    "category_id": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+$",
+                        "description": "The unique identifier of the test case category."
+                    },
+                    "outcome": {
+                        "type": "string",
+                        "description": "The outcome of the test case.",
+                        "enum": [
+                            "passed",
+                            "failed",
+                            "skipped"
+                        ]
+                    },
+                    "comments": {
+                        "type": "string",
+                        "description": "Any additional comments or observations about the test case."
+                    },
+                    "io_log": {
+                        "type": "string",
+                        "description": "The stdout and stderr for the test case."
+                    },
+                    "duration": {
+                        "type": "number",
+                        "minimum": 0,
+                        "description": "The duration of the test case in milliseconds."
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of test case.",
+                        "enum": []
+                    },
+                    "template_id": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
+                        "description": "The unique identifier of the test case template."
+                    }
+                }
+            }
+        }
+    }
+}
