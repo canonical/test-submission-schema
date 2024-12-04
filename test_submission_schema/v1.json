@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://certification.canonical.com/test-submission-schema.json",
+    "$id": "https://github.com/canonical/test-submission-schema/blob/main/test_submission_schema/v1.json",
     "title": "Test Submission Schema",
     "description": "A submission schema for submitting test plans.",
     "type": "object",
