@@ -14,7 +14,7 @@ build:
     pre_install:
       - git fetch --unshallow || true
     pre_build:
-      - cd docs && make schemadoc-convert
+      - cd docs && make sp-schemadoc-convert
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
