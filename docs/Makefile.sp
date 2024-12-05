@@ -23,7 +23,7 @@ CONFIRM_SUDO    ?= N
 .PHONY: sp-full-help sp-woke-install sp-spellcheck-install sp-pa11y-install sp-install sp-run sp-html \
         sp-epub sp-serve sp-clean sp-clean-doc sp-spelling sp-spellcheck sp-linkcheck sp-woke \
         sp-allmetrics sp-pa11y sp-pdf-prep-force sp-pdf-prep sp-pdf Makefile.sp sp-vale sp-bash \
-		sp-schemadoc-convert
+		schemadoc-convert
 
 sp-full-help: $(VENVDIR)
 	@. $(VENV); $(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
@@ -83,14 +83,14 @@ sp-pa11y-install:
 
 sp-install: $(VENVDIR)
 
-sp-schemadoc-convert: sp-install
+schemadoc-convert: sp-install
 	. $(VENV); python3 $(SPHINXDIR)/test_submission_schema/generate_schema_doc.py
 
-sp-run: sp-install sp-schemadoc-convert
+sp-run: sp-install schemadoc-convert
 	. $(VENV); $(VENVDIR)/bin/sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 
 # Doesn't depend on $(BUILDDIR) to rebuild properly at every run.
-sp-html: sp-install sp-schemadoc-convert
+sp-html: sp-install schemadoc-convert
 	. $(VENV); $(SPHINXBUILD) -W --keep-going -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" -w $(SPHINXDIR)/warnings.txt $(SPHINXOPTS)
 
 sp-epub: sp-install
