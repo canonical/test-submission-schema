@@ -9,8 +9,7 @@ def generate_schema_md(schema_version: str, relative_path: str, target_dir: Path
             # Version {schema_version}
 
             This document describes the schema of the ``test_submission_schema/{schema_version}.json`` 
-            files as part of the submission. To get the latest JSON schema file, please visit the 
-            Test Submission Schema repository.
+            files as part of the submission.
 
             ```{{jsonschema}} {relative_path}
                 :lift_definitions:
