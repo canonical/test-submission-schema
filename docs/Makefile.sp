@@ -83,8 +83,8 @@ sp-pa11y-install:
 
 sp-install: $(VENVDIR)
 
-schemadoc-convert: sp-install
-	. $(VENV); python3 $(SPHINXDIR)/test_submission_schema/generate_schema_doc.py
+schemadoc-convert:
+	$(VENVDIR); . $(VENV); python3 $(SPHINXDIR)/test_submission_schema/generate_schema_doc.py
 
 sp-run: sp-install schemadoc-convert
 	. $(VENV); $(VENVDIR)/bin/sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
