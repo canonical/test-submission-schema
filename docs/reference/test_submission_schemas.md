@@ -7,5 +7,5 @@ This document describes different versions of the test submission schema.
 glob:
 maxdepth: 1
 ---
-./submission_schema_v*
+./test_submission_schema_v*
 ```

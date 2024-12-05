@@ -5,5 +5,5 @@
 glob:
 maxdepth: 1
 ---
-./submission_schemas.md
+./test_submission_schemas.md
 ```
