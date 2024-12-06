@@ -13,8 +13,7 @@
     ],
     "properties": {
         "version": {
-            "type": "integer",
-            "minimum": 1,
+            "const": 1,
             "description": "The version of the test submission schema."
         },
         "origin": {
