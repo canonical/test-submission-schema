@@ -45,7 +45,7 @@
                         },
                         "version": {
                             "type": "string",
-                            "description": "The version of the application."
+                            "description": "The version of the package installed on the system."
                         },
                         "revision": {
                             "type": "string",
