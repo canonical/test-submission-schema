@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://github.com/canonical/test-submission-schema/blob/main/test_submission_schema/schemas/v1.json",
     "title": "Test Submission Schema",
-    "description": "A submission schema for submitting test plans.",
+    "description": "A submission schema for submitting results from a testing session.",
     "type": "object",
     "additionalProperties": false,
     "required": [
