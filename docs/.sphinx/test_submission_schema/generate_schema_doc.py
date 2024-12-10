@@ -31,7 +31,7 @@ def generate_schema_md(schema_path: Path, target_dir: Path):
             f"""
             # Version {schema_version}
 
-            This document describes the schema of the `test_submission_schema/{schema_path.name}` 
+            This document describes the schema of the `test_submission_schema/schemas/{schema_path.name}` 
             files as part of the submission.
 
             ```{{jsonschema}} {relative_path}
@@ -42,7 +42,7 @@ def generate_schema_md(schema_path: Path, target_dir: Path):
         ))
 
 def main() -> None:
-    source_dir = Path(__file__).parent.parent.parent.parent / "test_submission_schema"
+    source_dir = Path(__file__).parent.parent.parent.parent / "test_submission_schema/schemas"
     target_dir = Path(__file__).parent.parent.parent / "reference"
     
     for schema_path in source_dir.rglob("v*.json"):

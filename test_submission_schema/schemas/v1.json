@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/canonical/test-submission-schema/blob/main/test_submission_schema/v1.json",
+    "$id": "https://github.com/canonical/test-submission-schema/blob/main/test_submission_schema/schemas/v1.json",
     "title": "Test Submission Schema",
     "description": "A submission schema for submitting test plans.",
     "type": "object",
@@ -163,38 +163,15 @@
                     }
                 }
             }
-        },
+        }
+    },
+    "patternProperties": {
         "category_map": {
-            "const": {
-                "com.canonical.certification::acpi": "Advanced Configuration and Power Interface",
-                "com.canonical.certification::bluetooth_bluez5_selftests": "Bluetooth - BlueZ Self Tests",
-                "com.canonical.certification::i2c": "I²C (Inter-Integrated Circuit)",
-                "com.canonical.certification::information_gathering": "Gathers information about the DUT",
-                "com.canonical.certification::serial": "Serial Port",
-                "com.canonical.certification::snapd": "Snapd",
-                "com.canonical.certification::socketcan": "SocketCAN interface tests",
-                "com.canonical.certification::wwan": "Wireless Wide Area Network",
-                "com.canonical.plainbox::audio": "Audio tests",
-                "com.canonical.plainbox::bluetooth": "Bluetooth tests",
-                "com.canonical.plainbox::camera": "Camera tests",
-                "com.canonical.plainbox::cpu": "CPU tests",
-                "com.canonical.plainbox::disk": "Disk tests",
-                "com.canonical.plainbox::ethernet": "Ethernet Device tests",
-                "com.canonical.plainbox::info": "Informational tests",
-                "com.canonical.plainbox::memory": "Memory tests",
-                "com.canonical.plainbox::miscellanea": "Miscellaneous tests",
-                "com.canonical.plainbox::networking": "Non-device specific networking tests",
-                "com.canonical.plainbox::power-management": "Power Management tests",
-                "com.canonical.plainbox::uncategorised": "Uncategorised",
-                "com.canonical.plainbox::wireless": "Wireless networking tests",
-                "com.canonical.qa.shiner::common_module": "IMX common module test",
-                "com.canonical.qa.shiner::gpu": "IMX GPU related test",
-                "com.canonical.qa.shiner::npu": "i.MX NPU related test",
-                "com.canonical.qa.shiner::rpmsg": "i.MX M-series core RPMSG test",
-                "com.canonical.qa.shiner::secure-element": "i.MX Secure Element Test",
-                "com.canonical.qa.shiner::sensor": "Sensor"
-            },
-            "description": "The mapping of category ID to category names."
+            "type": "object",
+            "description": "The mapping of category ID to category names for a specific testing framework.",
+            "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[A-Za-z0-9_\\-]+$": {
+                "type": "string"
+            }
         }
     }
 }

@@ -63,3 +63,5 @@ VM
 webhook
 YAML
 const
+schemas
+patternProperties
