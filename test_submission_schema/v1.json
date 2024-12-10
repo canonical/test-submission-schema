@@ -58,7 +58,8 @@
                         }
                     },
                     "if": {"properties": {"type": {"const": "snap"}}},
-                    "then": {"required": ["revision"]}
+                    "then": {"required": ["type", "name", "version", "revision", "date"]},
+                    "else": {"required": ["type", "name", "version", "date"]}
                 }
             }
         },
@@ -84,7 +85,7 @@
                 },
                 "execution_id": {
                     "type": "string",
-                    "description": "Test Observer execution ID."
+                    "description": "execution ID for running the test plan."
                 }
             }
         },
