@@ -49,7 +49,7 @@
                         },
                         "revision": {
                             "type": "string",
-                            "description": "The revision of the application."
+                            "description": "The revision number of the installed Snap."
                         },
                         "date": {
                             "type": "string",
