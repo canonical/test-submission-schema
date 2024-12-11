@@ -85,3 +85,4 @@ repos:
   hooks:
     - id: check-metaschema
       files: test_submission_schema/schemas/.*\.json$
+      args: ["--verbose"]
