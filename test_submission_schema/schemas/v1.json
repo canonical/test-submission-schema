@@ -40,7 +40,7 @@
                         "type": {
                             "type": "string",
                             "description": "The type of application.",
-                            "examples": ["Snap", "Debian", "Source"]
+                            "enum": ["snap", "debian", "source"]
                         },
                         "name": {
                             "type": "string",
