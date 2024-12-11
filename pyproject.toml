@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "test_submission_schema"
+authors = [
+    {name = "Hou Nam Chiang", email = "douglas.chiang@canonical.com"},
+]
+description = """
+Test submission schema is a schema repo that contains a set of schemas
+for test submissions.
+"""
+version = "0.0.1"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jsonschema",
+]
+
+[project.optional-dependencies]
+develop = [
+    "pre-commit<4.0.0",
+    "pyfakefs",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "tox",
+]
+
+[project.scripts]
+yarf = "test_submission_schema.main:main"
+
+[tool.hatch.build]
+exclude = [
+  "docs",
+  "tests",
+]
+
+[tool.hatch.build.hooks.custom]
+dependencies = []
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.ruff]
+line-length = 79
+# In addition to the standard set of exclusions, omit all tests, plus a specific file.
+extend-exclude = [
+    "docs/*",
+]
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --ignore=docs/ --ignore=hatch_build.py"
+asyncio_default_fixture_loop_scope = "auto"
+markers = []
+
+[tool.coverage.run]
+omit = []
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "pass",
+    "continue",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.coverage.html]
+directory = "coverage_html_report"
