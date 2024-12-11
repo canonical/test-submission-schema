@@ -5,3 +5,9 @@
 .pytest_cache
 __pycache__
 uv.lock
+/*env*/
+coverage_html_report
+.DS_Store
+.coverage
+.idea/
+.vscode/
