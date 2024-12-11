@@ -3,7 +3,7 @@
 Test submission schema is a schema for different testing frameworks.
 It contains the essential fields that are required to describe a test submission.
 
----------
+______________________________________________________________________
 
 ## In this documentation
 
@@ -22,8 +22,9 @@ It contains the essential fields that are required to describe a test submission
 ````
 
 ````{grid} 1 1 2 2
-:reverse:
-
+---
+reverse:
+---
 ```{grid-item-card} [Reference](./reference/index.md)
 
 **Technical information** - specifications, APIs, architecture
@@ -36,13 +37,13 @@ It contains the essential fields that are required to describe a test submission
 
 ````
 
----------
-
+______________________________________________________________________
 
 ```{toctree}
-:hidden:
-:maxdepth: 2
-
+---
+hidden:
+maxdepth: 2
+---
 self
 ./tutorial/index.md
 ./how-to/index.md

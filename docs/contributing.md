@@ -3,6 +3,7 @@ orphan: true
 ---
 
 <!-- TODO: Replace all mentions of ACME with your project name -->
+
 <!-- TODO: Update all sections containing TODOs; make sure no TODOs are left -->
 
 # How to contribute
