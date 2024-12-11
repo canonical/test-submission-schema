@@ -10,3 +10,9 @@ https
 zA
 Za
 github
+YARF
+yarf
+debian
+bluetooth
+SuiteName
+TestName

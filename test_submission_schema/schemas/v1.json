@@ -134,7 +134,7 @@
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[A-Za-z0-9_\\-]+$",
                         "description": "The unique identifier of the test case category.",
-                        "examples": ["com.canonical.test_category::categor_A"]
+                        "examples": ["com.canonical.test_category::category_A"]
                     },
                     "outcome": {
                         "type": "string",
