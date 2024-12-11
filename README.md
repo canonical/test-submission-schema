@@ -30,15 +30,15 @@ This repository requires the following dependencies
    uv sync
    ```
 
+   Then, we install the development dependencies:
+   ```
+   uv pip install .[develop]
+   ```
+
    After that, we enter the virtual environment:
 
    ```
    source .venv/bin/activate
-   ```
-
-   Then, we install the development dependencies:
-   ```
-   uv pip install .[develop]
    ```
 
    We can start working on the repository here.
