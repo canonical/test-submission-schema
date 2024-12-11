@@ -2,7 +2,6 @@
 
 This repository contains the test submission schemas for different testing frameworks.
 
-
 ## Table of Contents
 
 - [Installation Guide](#installation-guide)
@@ -30,9 +29,11 @@ This repository requires the following dependencies
    uv sync
    ```
 
-   Then, we install the development dependencies:
+   Then, we install the development dependencies and install pre-commit, so your contribution will pass all the checks we run on the code:
+
    ```
    uv pip install .[develop]
+   uv tool run --from 'pre-commit<4.0.0' pre-commit install
    ```
 
    After that, we enter the virtual environment:
