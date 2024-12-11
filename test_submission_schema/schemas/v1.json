@@ -26,40 +26,45 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The application used to run the test plan."
+                    "description": "The application used to run the test plan.",
+                    "examples": ["YARF", "Checkbox"]
                 },
                 "version": {
                     "type": "string",
-                    "description": "The version of the application used to run the test plan."
+                    "description": "The version of the application used to run the test plan.",
+                    "examples": ["1.0.0"]
                 },
                 "packaging": {
                     "type": "object",
                     "properties": {
                         "type": {
                             "type": "string",
-                            "description": "The type of application. e.g. Snap, Deb."
+                            "description": "The type of application.",
+                            "examples": ["Snap", "Debian", "Source"]
                         },
                         "name": {
                             "type": "string",
-                            "description": "The name of the package installed on the system."
+                            "description": "The name of the package installed on the system.",
+                            "examples": ["yarf", "checkbox"]
                         },
                         "version": {
                             "type": "string",
-                            "description": "The version of the package installed on the system."
+                            "description": "The version of the package installed on the system.",
+                            "examples": ["1.0.0"]
                         },
                         "revision": {
                             "type": "string",
-                            "description": "The revision number of the installed Snap."
-                        },
-                        "date": {
-                            "type": "string",
-                            "format": "date",
-                            "description": "The package creation date."
+                            "description": "The revision number of the installed Snap.",
+                            "examples": ["100", "150"]
                         }
                     },
                     "if": {"properties": {"type": {"const": "snap"}}},
-                    "then": {"required": ["type", "name", "version", "revision", "date"]},
-                    "else": {"required": ["type", "name", "version", "date"]}
+                    "then": {"required": ["type", "name", "version", "revision"]},
+                    "else": {
+                        "if": {"properties": {"type": {"const": "debian"}}},
+                        "then": {"required": ["type", "name", "version"]},
+                        "else": {"required": ["type", "version"]}
+                    }
                 }
             }
         },
@@ -77,7 +82,8 @@
                 "test_plan_id": {
                     "type": "string",
                     "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+$",
-                    "description": "The unique identifier of the test plan."
+                    "description": "The unique identifier of the test plan.",
+                    "examples": ["com.canonical.yarf::dell_bluetooth", "com.canonical.checkbox::hp_audio"]
                 },
                 "description": {
                     "type": "string",
@@ -102,14 +108,14 @@
                     "comments",
                     "io_log",
                     "duration",
-                    "type",
-                    "template_id"
+                    "type"
                 ],
                 "properties": {
                     "id": {
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
-                        "description": "The unique identifier of the test case."
+                        "description": "The unique identifier of the test case.",
+                        "examples": ["com.canonical.yarf::SuiteName/TestName"]
                     },
                     "test_description": {
                         "type": "string",
@@ -127,7 +133,8 @@
                     "category_id": {
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[A-Za-z0-9_\\-]+$",
-                        "description": "The unique identifier of the test case category."
+                        "description": "The unique identifier of the test case category.",
+                        "examples": ["com.canonical.test_category::categor_A"]
                     },
                     "outcome": {
                         "type": "string",
@@ -149,17 +156,18 @@
                     "duration": {
                         "type": "number",
                         "minimum": 0,
-                        "description": "The duration of the test case in milliseconds."
+                        "description": "The duration of the test case in seconds."
                     },
                     "type": {
                         "type": "string",
                         "description": "The type of test case.",
                         "enum": []
                     },
-                    "template_id": {
+                    "test_group_id": {
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
-                        "description": "The unique identifier of the test case template."
+                        "description": "The unique identifier of the test group.",
+                        "examples": ["com.canonical.test_group::group_A"]
                     }
                 }
             }

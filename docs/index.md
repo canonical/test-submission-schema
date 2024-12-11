@@ -1,7 +1,7 @@
 # Test Submission Schema
 
-Test submission schema is a schema for test submission. It contains the
-the essential fields that are required to describe a test submission.
+Test submission schema is a schema for different testing frameworks.
+It contains the essential fields that are required to describe a test submission.
 
 ---------
 
