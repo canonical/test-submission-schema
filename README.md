@@ -14,7 +14,7 @@ This repository contains the test submission schemas for different testing frame
 
 This repository requires the following dependencies
 
-- [Python 3.13](https://www.python.org/downloads/release/python-3131/)
+- [Python 3.12](https://www.python.org/downloads/release/python-3128/)
 - [uv](https://docs.astral.sh/uv/)
 - [Snapcraft](https://snapcraft.io/docs/installing-snapcraft)
 
