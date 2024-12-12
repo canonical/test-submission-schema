@@ -1,6 +1,6 @@
 # Test Submission Schema
 
-This repository contains the test submission schemas for different testing frameworks.
+This repository contains the test submission schemas used by different testing frameworks.
 
 ## Table of Contents
 

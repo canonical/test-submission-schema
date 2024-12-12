@@ -8,8 +8,7 @@ authors = [
     {name = "Hou Nam Chiang", email = "douglas.chiang@canonical.com"},
 ]
 description = """
-Test submission schema is a schema repo that contains a set of schemas
-for test submissions.
+This repository contains the test submission schemas used by different testing frameworks.
 """
 version = "0.0.1"
 readme = "README.md"
