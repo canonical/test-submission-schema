@@ -156,11 +156,6 @@
                         "minimum": 0,
                         "description": "The duration of the test case in seconds."
                     },
-                    "type": {
-                        "type": "string",
-                        "description": "The type of test case.",
-                        "enum": []
-                    },
                     "test_group_id": {
                         "type": "string",
                         "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
