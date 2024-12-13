@@ -31,8 +31,8 @@ def generate_schema_md(schema_path: Path, target_dir: Path):
             f"""
             # Version {schema_version}
 
-            This document describes the schema of the `test_submission_schema/schemas/{schema_path.name}` 
-            files as part of the submission.
+            This document describes the schema `test_submission_schema/schemas/{schema_path.name}` 
+            file as part of the submission.
 
             ```{{jsonschema}} {relative_path}
                 :lift_definitions:
