@@ -81,7 +81,6 @@
                 },
                 "test_plan_id": {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+$",
                     "description": "The unique identifier of the test plan.",
                     "examples": ["com.canonical.yarf::dell_bluetooth", "com.canonical.checkbox::hp_audio"]
                 },
@@ -113,7 +112,6 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
                         "description": "The unique identifier of the test case.",
                         "examples": ["com.canonical.yarf::SuiteName/TestName"]
                     },
