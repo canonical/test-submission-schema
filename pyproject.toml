@@ -28,7 +28,7 @@ develop = [
 ]
 
 [project.scripts]
-yarf = "test_submission_schema.main:main"
+test_submission_schema = "test_submission_schema.main:main"
 
 [tool.hatch.build]
 exclude = [
