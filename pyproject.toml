@@ -27,9 +27,6 @@ develop = [
     "tox",
 ]
 
-[project.scripts]
-test_submission_schema = "test_submission_schema.main:main"
-
 [tool.hatch.build]
 exclude = [
   "docs",
