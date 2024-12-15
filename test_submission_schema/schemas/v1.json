@@ -1,0 +1,178 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/canonical/test-submission-schema/blob/main/test_submission_schema/schemas/v1.json",
+    "title": "Test Submission Schema",
+    "description": "A submission schema for submitting results from a testing session.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "origin",
+        "session_data",
+        "results"
+    ],
+    "properties": {
+        "version": {
+            "const": 1,
+            "description": "The version of the test submission schema."
+        },
+        "origin": {
+            "type": "object",
+            "required": [
+                "name",
+                "version",
+                "packaging"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The application used to run the test plan.",
+                    "examples": ["YARF", "Checkbox"]
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version of the application used to run the test plan.",
+                    "examples": ["1.0.0"]
+                },
+                "packaging": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of application.",
+                            "enum": ["snap", "debian", "source"]
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the package installed on the system.",
+                            "examples": ["yarf", "checkbox"]
+                        },
+                        "version": {
+                            "type": "string",
+                            "description": "The version of the package installed on the system.",
+                            "examples": ["1.0.0"]
+                        },
+                        "revision": {
+                            "type": "string",
+                            "description": "The revision number of the installed Snap.",
+                            "examples": ["100", "150"]
+                        }
+                    },
+                    "if": {"properties": {"type": {"const": "snap"}}},
+                    "then": {"required": ["type", "name", "version", "revision"]},
+                    "else": {
+                        "if": {"properties": {"type": {"const": "debian"}}},
+                        "then": {"required": ["type", "name", "version"]},
+                        "else": {"required": ["type", "version"]}
+                    }
+                }
+            }
+        },
+        "session_data": {
+            "type": "object",
+            "required": [
+                "title",
+                "test_plan_id"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the test plan."
+                },
+                "test_plan_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the test plan.",
+                    "examples": ["com.canonical.yarf::dell_bluetooth", "com.canonical.checkbox::hp_audio"]
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A brief description of the test plan."
+                },
+                "execution_id": {
+                    "type": "string",
+                    "description": "Execution ID for running the test plan."
+                }
+            }
+        },
+        "results": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "test_description",
+                    "certification_status",
+                    "category_id",
+                    "outcome",
+                    "comments",
+                    "io_log",
+                    "duration",
+                    "type"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the test case.",
+                        "examples": ["com.canonical.yarf::SuiteName/TestName"]
+                    },
+                    "test_description": {
+                        "type": "string",
+                        "description": "The description of the test case.",
+                        "maxLength": 80
+                    },
+                    "certification_status": {
+                        "type": "string",
+                        "description": "The certification status of the test case.",
+                        "enum": [
+                            "blocker",
+                            "non-blocker"
+                        ]
+                    },
+                    "category_id": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[A-Za-z0-9_\\-]+$",
+                        "description": "The unique identifier of the test case category.",
+                        "examples": ["com.canonical.test_category::category_A"]
+                    },
+                    "outcome": {
+                        "type": "string",
+                        "description": "The outcome of the test case.",
+                        "enum": [
+                            "passed",
+                            "failed",
+                            "skipped"
+                        ]
+                    },
+                    "comments": {
+                        "type": "string",
+                        "description": "Any additional comments or observations about the test case."
+                    },
+                    "io_log": {
+                        "type": "string",
+                        "description": "The stdout and stderr for the test case."
+                    },
+                    "duration": {
+                        "type": "number",
+                        "minimum": 0,
+                        "description": "The duration of the test case in seconds."
+                    },
+                    "test_group_id": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
+                        "description": "The unique identifier of the test group.",
+                        "examples": ["com.canonical.test_group::scenario_A", "com.canonical.test_group::provisioning"]
+                    }
+                }
+            }
+        }
+    },
+    "patternProperties": {
+        "category_map": {
+            "type": "object",
+            "description": "The mapping of category ID to category names for a specific testing framework.",
+            "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[A-Za-z0-9_\\-]+$": {
+                "type": "string"
+            }
+        }
+    }
+}
