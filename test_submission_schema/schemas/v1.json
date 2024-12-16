@@ -158,7 +158,6 @@
                     },
                     "test_group_id": {
                         "type": "string",
-                        "pattern": "^[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+\\.[a-zA-Z0-9_]+::[a-zA-Z0-9_]+/[a-zA-Z0-9_]+$",
                         "description": "The unique identifier of the test group.",
                         "examples": ["com.canonical.test_group::scenario_A", "com.canonical.test_group::provisioning"]
                     }
