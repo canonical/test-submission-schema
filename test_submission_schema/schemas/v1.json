@@ -106,8 +106,7 @@
                     "outcome",
                     "comments",
                     "io_log",
-                    "duration",
-                    "type"
+                    "duration"
                 ],
                 "properties": {
                     "id": {
